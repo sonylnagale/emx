@@ -39,6 +39,11 @@ app.get('/', async function(req, res) {
     case 'Referrer':
       res.send('Jenny Gasparis');
       break;
+    case 'Degree':
+      res.send('BFA, Graphic Design; BA, Philosophy');
+      break;
+    case 'Position':
+      res.send('JavaScript Architect/Team Lead');
 
     default:
       res.send('OK');
