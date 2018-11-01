@@ -1,17 +1,17 @@
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
-const logger = require('morgan');
+// const logger = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
-const index = require('./routes/index');
-const users = require('./routes/users');
+// const index = require('./routes/index');
+// const users = require('./routes/users');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
@@ -19,8 +19,8 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Function to handle the root path
 app.get('/', async function(req, res) {
@@ -30,6 +30,16 @@ app.get('/', async function(req, res) {
     case 'Name':
       res.send('Sonyl Nagale');
       break;
+    case 'Email Address':
+      res.send('sonyl@nagale.com');
+      break;
+    case 'Years':
+      res.send('>15');
+      break;
+    case 'Referrer':
+      res.send('Jenny Gasparis');
+      break;
+
     default:
       res.send('OK');
       break;
