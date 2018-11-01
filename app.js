@@ -44,7 +44,16 @@ app.get('/', async function(req, res) {
       break;
     case 'Position':
       res.send('JavaScript Architect/Team Lead');
-
+      break;
+    case 'Phone':
+      res.send('323.793.3369');
+      break;
+    case 'Status':
+      res.send('Yes');
+      break;
+    case 'Resume':
+      res.send('https://www.dropbox.com/s/kz9kbroqs74dn16/sonyl_nagale_resume_2018.3.pdf?dl=0');
+      break;
     default:
       res.send('OK');
       break;
