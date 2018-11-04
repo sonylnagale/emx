@@ -68,8 +68,10 @@ app.get('/', async function(req, res) {
 const puzzle = (input) => {
   // GET /?q=Puzzle&d=Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3E--%0AB--%3E-%0AC--%3D-%0AD--%3C-%0A
   const header = /Please+solve+this+puzzle/g;
+  let thisPuzzle = decodeURIComponent(input.replace(header, ''));
 
-  return (decodeURIComponent(input.replace(header, '')));
+  consoole.log(thisPuzzle);
+  return (thisPuzzle);
 
 }
 
