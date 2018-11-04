@@ -55,14 +55,23 @@ app.get('/', async function(req, res) {
       res.send('https://www.dropbox.com/s/kz9kbroqs74dn16/sonyl_nagale_resume_2018.3.pdf?dl=0');
       break;
     case 'Puzzle':
-      res.send('ABCD\nA=<<<\n\B>=<>\nC>>=>\nD><<=')
-        break;
+      res.send(puzzle(req.query.d));
+      //res.send('ABCD\nA=<<<\n\B>=<>\nC>>=>\nD><<=')
+      break;
     default:
       res.send('OK');
       break;
   }
 
 });
+
+const puzzle = (input) => {
+  // GET /?q=Puzzle&d=Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3E--%0AB--%3E-%0AC--%3D-%0AD--%3C-%0A
+  const header = /Please+solve+this+puzzle/g;
+
+  return (decodeURIComponent(input.replace(header, '')));
+
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
