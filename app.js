@@ -71,7 +71,7 @@ const puzzle = (input) => {
   let thisPuzzle = decodeURIComponent(input.replace(header, ''));
 
   let thisArray = thisPuzzle.split('\n');
-  console.lot(thisArray);
+  console.log(thisArray);
   return thisPuzzle;
 
 }
