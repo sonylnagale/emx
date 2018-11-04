@@ -70,8 +70,8 @@ const puzzle = (input) => {
   const header = /Please+solve+this+puzzle/g;
   let thisPuzzle = decodeURIComponent(input.replace(header, ''));
 
-  consoole.log(thisPuzzle);
-  return (thisPuzzle);
+  console.log(thisPuzzle);
+  return thisPuzzles;
 
 }
 
