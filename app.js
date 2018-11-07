@@ -55,7 +55,7 @@ app.get('/', async function(req, res) {
       res.send('https://www.dropbox.com/s/kz9kbroqs74dn16/sonyl_nagale_resume_2018.3.pdf?dl=0');
       break;
     case 'Puzzle':
-      res.send(puzzle(query));
+      res.send(puzzle("Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3C--%0AB-%3D--%0AC-%3E--%0AD--%3E-%0A"));
       break;
     default:
       res.send('OK');
@@ -153,5 +153,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+// puzzle("Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3C--%0AB-%3D--%0AC-%3E--%0AD--%3E-%0A");
 module.exports = app;
