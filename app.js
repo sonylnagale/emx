@@ -95,6 +95,7 @@ const puzzle = (input) => {
   for (let i = 0; i < order.length; i++) {
     order[i] = map[i];
   }
+  console.log(matrix.toString());
   return matrix.toString();
 }
 
