@@ -95,7 +95,7 @@ const puzzle = (input) => {
   for (let i = 0; i < order.length; i++) {
     order[i] = map[i];
   }
-  return matrix;
+  return matrix.toString();
 }
 
 const calculate = (arg) => {
