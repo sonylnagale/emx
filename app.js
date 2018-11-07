@@ -55,7 +55,7 @@ app.get('/', async function(req, res) {
       res.send('https://www.dropbox.com/s/kz9kbroqs74dn16/sonyl_nagale_resume_2018.3.pdf?dl=0');
       break;
     case 'Puzzle':
-      res.send('ABCD\nA=<<<\n\B>=<>\nC>>=>\nD><<=')
+      res.send(puzzle(req.query.d)))
       break;
     default:
       res.send('OK');
