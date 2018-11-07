@@ -57,6 +57,8 @@ app.get('/', async function(req, res) {
     case 'Puzzle':
       res.send(puzzle("Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3C--%0AB-%3D--%0AC-%3E--%0AD--%3E-%0A"));
       break;
+    case 'Source':
+      res.send('https://github.com/sonylnagale/emx');
     default:
       res.send('OK');
       break;
