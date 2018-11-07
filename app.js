@@ -136,8 +136,6 @@ const calculate = (arg) => {
 //   return args;
 // }
 
-
-puzzle("Please+solve+this+puzzle%3A%0A+ABCD%0AA---%3C%0AB---%3E%0AC-%3E--%0AD---%3D%0A");
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
