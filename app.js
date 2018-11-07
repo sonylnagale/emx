@@ -55,8 +55,7 @@ app.get('/', async function(req, res) {
       res.send('https://www.dropbox.com/s/kz9kbroqs74dn16/sonyl_nagale_resume_2018.3.pdf?dl=0');
       break;
     case 'Puzzle':
-      res.send(puzzle(req.query.d));
-      //res.send('ABCD\nA=<<<\n\B>=<>\nC>>=>\nD><<=')
+      res.send('ABCD\nA=<<<\n\B>=<>\nC>>=>\nD><<=')
       break;
     default:
       res.send('OK');
@@ -66,25 +65,78 @@ app.get('/', async function(req, res) {
 });
 
 const puzzle = (input) => {
-  // GET /?q=Puzzle&d=Please+solve+this+puzzle%3A%0A+ABCD%0AA-%3E--%0AB--%3E-%0AC--%3D-%0AD--%3C-%0A
-  const pattern = /A|B|C|D|Please+solve+this+puzzle\n/g;
-  let thisPuzzle = decodeURIComponent(input.replace(pattern, '')).split('\n');
+  const map = {
+    0:'A',
+    1:'B',
+    2:'C',
+    3:'D'
+  }
+
+  const header = /Please\+solve\+this\+puzzle%3A%0A\+/g
+  const pattern = /A|B|C|D|\+|\:/g;
+  const newlines = /%0A/g;
+
+  let thisPuzzle = decodeURIComponent(input.replace(header, '')).replace(pattern, '').trim().split('\n');
 
   let thisArray = [];
 
-  for (let i = 0; i < thisPuzzle[i].length; i++) {
-    let row = []
-    for (let j = 0; j < thisPuzzle[i][j].length; j++) {
-      row.push(j);
+  for (let i = 0; i < thisPuzzle.length; i++) {
+    let row = [];
+    for (let j = 0; j < thisPuzzle[i].length; j++) {
+      row.push(thisPuzzle[i][j]);
     }
     thisArray.push(row);
   }
 
-  console.log(thisArray);
-  return thisPuzzle;
+  const vars = calculate(thisArray);
+  let matrix = vars[0];
+  const order = vars[1];
 
+  for (let i = 0; i < order.length; i++) {
+    order[i] = map[i];
+  }
+  return matrix;
 }
 
+const calculate = (arg) => {
+  let values = [];
+  for (let i = 0; i < arg.length; i++) {
+    values[i] = i;
+  }
+  for (let i = 0; i < arg.length; i++) {
+    for (let j = 0; j < arg[i].length; j++) {
+      if (i == j) {
+        arg[i][j] = '=';
+      } else {
+        if (arg[i][j] == '<') {
+          // let temp = values[i];
+          // values[i] = values[j];
+          // values[j] = temp;
+        } else if (arg[i][j] == '>') {
+          // let temp = values[j];
+          // values[j] = values[i];
+          // values[i] = temp;
+        }
+      }
+
+      if (arg[i][j] == '-')  {
+        arg[i][j] = values[i];
+      }
+    }
+  }
+
+  return [arg, values];
+}
+//
+// const compare = (args, operator) => {
+//   if (operator == "<") {
+//     args.y = args.x;
+//   }
+//   return args;
+// }
+
+
+puzzle("Please+solve+this+puzzle%3A%0A+ABCD%0AA---%3C%0AB---%3E%0AC-%3E--%0AD---%3D%0A");
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
